@@ -1,6 +1,6 @@
 /*
  ============================================================================
- Name        : zhopa_bolgova.c
+ Name        : simple_calc_on_C.c
  Author      : sythole
  Version     :
  Copyright   : my and only my

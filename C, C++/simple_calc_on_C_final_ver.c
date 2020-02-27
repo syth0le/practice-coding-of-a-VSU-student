@@ -1,10 +1,10 @@
 /*
  ============================================================================
- Name        : my_f1rst_test.c
- Author      : Cat
- Version     :
- Copyright   : mya
- Description : Hello World in C, Ansi-style
+ Name        : simple_calc_on_C_final_ver.c
+ Author      : syth0le
+ Version     : 1
+ Copyright   : my and only my
+ Description : simple calc in C, Ansi-style
  ============================================================================
  */
 

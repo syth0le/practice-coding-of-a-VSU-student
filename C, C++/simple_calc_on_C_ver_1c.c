@@ -59,7 +59,6 @@ int main(void) {
         else if (sign == '#'){
             break;
         }
-    else printf("can't understand this \n");
     else printf("can't understand this\n");
     }
 }

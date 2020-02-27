@@ -55,7 +55,9 @@ int main(void) {
                 var2 = var2 * ist1;
                 var1 = var2;}
             printf("%.2f\n", var2);}
+        else printf("unsupportable sign. Please, type another from this range: +, -, *, /, ^, !.\n");
         printf("If u want to continue type 1, but if u want to exit type 0:");
         scanf("%i", &turn_on);
     }
+
 }

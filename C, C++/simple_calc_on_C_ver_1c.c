@@ -59,10 +59,7 @@ int main(void) {
         else if (sign == '#'){
             break;
         }
-<<<<<<< HEAD:C, C++/simple_calc_on_C_ver_1c.c
     else printf("can't understand this \n");
-=======
     else printf("can't understand this\n");
->>>>>>> 496462e5c67db4ba7880e2450e61dfebac486905:C, C++/simple_calc_on_C_ver_1c
     }
 }

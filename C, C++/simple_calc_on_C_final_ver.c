@@ -23,7 +23,7 @@ int main(void) {
     while(turn_on != 0){ //
         printf("type first number:"); // typing first number
         scanf("%f%*c", &firstNum);
-        printf("sign: ");
+        printf("type sign from range('+', '-', '*', '/', '^', '!'): ");
         scanf("%c%*c", &sign); // typing sign of the operation
         if (sign == '+' || sign == '-' || sign == '*' || sign == '/' || sign == '^'){
             printf("type second number:"); // typing second number

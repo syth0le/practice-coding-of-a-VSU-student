@@ -32,17 +32,17 @@ int main(void) {
                 case '+': // typing '+' for addition
                     printf("%.2f\n", firstNum+secondNum);
                     break;
-                case '-': // typing '-' for
+                case '-': // typing '-' for subtraction
                     printf("%.2f\n", firstNum-secondNum);
                     break;
-                case '*': // typing '*' for
+                case '*': // typing '*' for multiplication
                     printf("%.2f\n", firstNum*secondNum);
                     break;
-                case '/': // typing '/' for
+                case '/': // typing '/' for division
                     if (secondNum != 0) printf("%.2f\n", firstNum/secondNum);
                     else printf("mistake!U can't divide into 0\n");
                     break; // if u divide into 0 there is error message will be appeared
-                case '^': // typing '^' for
+                case '^': // typing '^' for exponentiation
                     var2 = 1;
                     var1 = 1;
                     for (int ist1=1;ist1<=secondNum;ist1++){

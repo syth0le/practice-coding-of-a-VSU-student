@@ -12,6 +12,7 @@ def sharps():
 print(
     'Enter the number between 0 and 24' '\n'
     'The program will make a triangular pyramid of gratings' '\n'
+    'height:', end=''
 )
 
 sharps()

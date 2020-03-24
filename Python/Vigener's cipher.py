@@ -67,7 +67,21 @@ def encrypt():
 
 
 def decrypt():
-    return 2
+    #lower_alphabet.reverse()
+    for letter in work_list:
+        work_num = lower_alphabet.index(letter)
+        work_massive.append(work_num)
+    for letter in key_list:
+        key_num = lower_alphabet.index(letter)
+        key_massive.append(key_num)
+    a = np.array(work_massive)
+    b = np.array(key_massive)
+    result_massive = a - b
+    temp = []
+    for letter in result_massive:
+        temp.append(lower_alphabet[letter])
+    res_string = ''.join(temp)
+    return res_string
 
 
 if int(mode) == 1:

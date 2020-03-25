@@ -1,4 +1,6 @@
 from time import sleep
+#[ 0  1  2  3 52  4  5  6  7] [ 0  1  2  3 52  0  1  2  3]
+#[  0   2   4   6 104   4   6   8  10]
 import numpy as np
 lower_alphabet = list('abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz' + ' ' * 54)
 upper_alphabet = list('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ' + ' ' * 54)
@@ -58,7 +60,9 @@ def encrypt():
         key_massive.append(key_num)
     a = np.array(work_massive)
     b = np.array(key_massive)
+    print(a, b)
     result_massive = a + b
+    print(result_massive)
     temp = []
     for letter in result_massive:
         temp.append(lower_alphabet[letter])
@@ -67,16 +71,21 @@ def encrypt():
 
 
 def decrypt():
-    #lower_alphabet.reverse()
     for letter in work_list:
         work_num = lower_alphabet.index(letter)
+        if work_num == 52:
+            work_num += 52
         work_massive.append(work_num)
     for letter in key_list:
         key_num = lower_alphabet.index(letter)
         key_massive.append(key_num)
     a = np.array(work_massive)
     b = np.array(key_massive)
+    print(a, b)
     result_massive = a - b
+    print(result_massive)
+    result_massive = map(abs, result_massive)
+    print(result_massive)
     temp = []
     for letter in result_massive:
         temp.append(lower_alphabet[letter])

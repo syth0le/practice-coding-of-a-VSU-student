@@ -1,6 +1,10 @@
 from time import sleep
-#[ 0  1  2  3 52  4  5  6  7] [ 0  1  2  3 52  0  1  2  3]
-#[  0   2   4   6 104   4   6   8  10]
+#encrypt()
+#[ 0 19 19  0  2 10 52  0 19 52  3  0 22 13] [11  4 12 14 13 11 52  4 12 52 14 13 11  4]
+#[ 11  23  31  14  15  21 104   4  31 104  17  13  33  17]
+#decript()
+#[ 11  23   5  14  15  21 104   4   5 104  17  13   7  17] [11  4 12 14 13 11 52  4 12 52 14 13 11  4]
+#[ 0 19 -7  0  2 10 52  0 -7 52  3  0 -4 13]
 import numpy as np
 lower_alphabet = list('abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz' + ' ' * 54)
 upper_alphabet = list('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ' + ' ' * 54)
@@ -84,11 +88,15 @@ def decrypt():
     print(a, b)
     result_massive = a - b
     print(result_massive)
-    result_massive = map(abs, result_massive)
     print(result_massive)
     temp = []
+    now_alphabet = lower_alphabet[:26]
+    print(now_alphabet)
     for letter in result_massive:
-        temp.append(lower_alphabet[letter])
+        if letter >= 52:
+            temp.append(' ')
+        else:
+            temp.append(now_alphabet[letter])
     res_string = ''.join(temp)
     return res_string
 

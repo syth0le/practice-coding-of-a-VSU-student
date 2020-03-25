@@ -1,10 +1,4 @@
 from time import sleep
-#encrypt()
-#[ 0 19 19  0  2 10 52  0 19 52  3  0 22 13] [11  4 12 14 13 11 52  4 12 52 14 13 11  4]
-#[ 11  23  31  14  15  21 104   4  31 104  17  13  33  17]
-#decript()
-#[ 11  23   5  14  15  21 104   4   5 104  17  13   7  17] [11  4 12 14 13 11 52  4 12 52 14 13 11  4]
-#[ 0 19 -7  0  2 10 52  0 -7 52  3  0 -4 13]
 import numpy as np
 lower_alphabet = list('abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz' + ' ' * 54)
 upper_alphabet = list('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ' + ' ' * 54)
@@ -13,13 +7,13 @@ print('''This program is Vigenere cipher. you can choose mode type:
 Just type sentence which you want to encrypt/decrypt, then type key word, 
 choose app mode end wait for result.
 ''')
-#sleep(1)
+sleep(1)
 print('Type sentence: ', end='')
 work_sentence = str(input())
-#sleep(0.25)
+sleep(0.25)
 print("Type key word: ", end='')
 key_word = str(input())
-#sleep(0.25)
+sleep(0.25)
 print("Choose mode type: ", end='')
 mode = input()
 ##
@@ -47,12 +41,6 @@ key_list = list(key_word)
 ##
 work_massive = []
 key_massive = []
-print()
-print(work_sentence)
-print(key_word)
-print(len(work_sentence), len(key_word))
-print(massive_empty)
-##
 
 
 def encrypt():
@@ -64,9 +52,7 @@ def encrypt():
         key_massive.append(key_num)
     a = np.array(work_massive)
     b = np.array(key_massive)
-    print(a, b)
     result_massive = a + b
-    print(result_massive)
     temp = []
     for letter in result_massive:
         temp.append(lower_alphabet[letter])
@@ -85,13 +71,9 @@ def decrypt():
         key_massive.append(key_num)
     a = np.array(work_massive)
     b = np.array(key_massive)
-    print(a, b)
     result_massive = a - b
-    print(result_massive)
-    print(result_massive)
     temp = []
     now_alphabet = lower_alphabet[:26]
-    print(now_alphabet)
     for letter in result_massive:
         if letter >= 52:
             temp.append(' ')
@@ -106,4 +88,4 @@ if int(mode) == 1:
 elif int(mode) == 2:
     print("Decryption result: ", decrypt())
 else:
-    print("\nThis mode is unsupportable.\nPlease, type 1 - encrypt or 2 - decrypt")
+    print("\nThis mode is unsupportable.\nPlease, read the program description and type 1 - encrypt or 2 - decrypt")

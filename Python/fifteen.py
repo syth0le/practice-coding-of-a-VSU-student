@@ -112,6 +112,7 @@ def won():
 
 while True:
     if won() == 0:
+        print("\nCongratulations!!! U won.")
         break
     move()
     draw()

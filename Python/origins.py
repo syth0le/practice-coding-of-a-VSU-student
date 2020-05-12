@@ -21,7 +21,7 @@ if choose == 'sort':
 elif choose == 'search':
     print("Enter developer's name: ", end='')
     name = input()
-    for father in fathersDict.keys():
+        for father in fathersDict.keys():
         if father == name:
             print(fathersDict[name], "was created by", name)
 else:

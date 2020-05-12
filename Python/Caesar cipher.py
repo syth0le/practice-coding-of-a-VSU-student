@@ -46,3 +46,5 @@ elif int(mode) == 2:
     print("Result: ", decrypt())
 else:
     print("Unsupportable mode. Try again.")
+
+sleep(1000)

@@ -315,11 +315,10 @@ fun roman(n: Int): String {
  */
 fun russian(n: Int): String {
     var num = n
-    var arrayOfNum = n.toString().map { it.toString().toInt() }
-    var len = arrayOfNum.size
-    var posOfThs = len - 3
+    val arrayOfNum = n.toString().map { it.toString().toInt() }
+    val len = arrayOfNum.size
+    val posOfThs = len - 3
     var rezStr = ""
-    var tempNum = 0
 
     val rusWordsDownTen = mutableListOf<String>(
         "одна", "две", "три", "четыре", "пять",
@@ -330,7 +329,7 @@ fun russian(n: Int): String {
         "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать"
     )
     val rusWordsDown100 = mutableListOf<String>(
-        "двадцать", "тридцать", "сорок", "пятьдесят",
+        "", "двадцать", "тридцать", "сорок", "пятьдесят",
         "шестьдесят", "семьдесят", "восемьдесят", "девяносто"
     )
     val rusWordsHundreds = mutableListOf<String>(
@@ -344,6 +343,7 @@ fun russian(n: Int): String {
     var tempIndex = 0
     var indexOfThsd = 0
     var temp = posOfThs
+    var tempReverse = len - posOfThs
     if (posOfThs > 0) indexOfThsd = posOfThs
 
 
@@ -353,30 +353,39 @@ fun russian(n: Int): String {
         // Вывод всего что тысячного порядка
         if (tempIndex in 1..posOfThs && numI != 0) {
             if (posOfThs - 2 == arrayOfNum.indexOf(1)) {
-                rezStr += " " + when (temp) {
-                    3 -> rusWordsHundreds[numI - 1]
-                    2 -> rusWordsUpTen[numI]
+                rezStr += when (temp) {
+                    3 -> rusWordsHundreds[numI - 1] + " "
+                    2 -> rusWordsUpTen[numI] + " "
                     else -> ""
                 }
             } else {
-                rezStr += " " + when (temp) {
-                    3 -> rusWordsHundreds[numI - 1]
-                    2 -> rusWordsDown100[numI - 2]
-                    1 -> rusWordsDownTen[numI - 1]
+                rezStr += when (temp) {
+                    3 -> rusWordsHundreds[numI - 1] + " "
+                    2 -> rusWordsDown100[numI - 1] + " "
+                    1 -> rusWordsDownTen[numI - 1] + " "
                     else -> ""
                 }
                 if (tempIndex == indexOfThsd) {
-                    rezStr += " " + when {
-                        helpNums.contains(numI) -> numerationThsds[1]
-                        1 == numI -> numerationThsds[0]
-                        else -> numerationThsds[2]
+                    rezStr += when {
+                        helpNums.contains(numI) -> numerationThsds[1] + " "
+                        1 == numI -> numerationThsds[0] + " "
+                        else -> numerationThsds[2] + " "
                     }
                 }
             }
         }
-        temp--
 
-        // вывод корректного слова "тысяча"
+        temp--
+        if (tempIndex in posOfThs + 1..len && numI != 0) {
+            rezStr += when (tempReverse) {
+                3 -> rusWordsHundreds[numI - 1]
+                2 -> " " + rusWordsDown100[numI - 1]
+                1 -> " " + rusWordsDownTen[numI - 1]
+                else -> ""
+            }
+            tempReverse--
+        }
+
     }
 
 
@@ -386,5 +395,5 @@ fun russian(n: Int): String {
 }
 
 fun main() {
-    println(russian(305975))
+    println(russian(100100))
 }

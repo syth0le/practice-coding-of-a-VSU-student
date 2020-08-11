@@ -2,6 +2,8 @@
 
 package lesson6.task1
 
+import java.lang.NumberFormatException
+
 /**
  * Пример
  *
@@ -42,20 +44,20 @@ fun timeSecondsToStr(seconds: Int): String {
 /**
  * Пример: консольный ввод
  */
-fun main() {
-    println("Введите время в формате ЧЧ:ММ:СС")
-    val line = readLine()
-    if (line != null) {
-        val seconds = timeStrToSeconds(line)
-        if (seconds == -1) {
-            println("Введённая строка $line не соответствует формату ЧЧ:ММ:СС")
-        } else {
-            println("Прошло секунд с начала суток: $seconds")
-        }
-    } else {
-        println("Достигнут <конец файла> в процессе чтения строки. Программа прервана")
-    }
-}
+//fun main() {
+//    println("Введите время в формате ЧЧ:ММ:СС")
+//    val line = readLine()
+//   if (line != null) {
+//       val seconds = timeStrToSeconds(line)
+//       if (seconds == -1) {
+//           println("Введённая строка $line не соответствует формату ЧЧ:ММ:СС")
+//       } else {
+//           println("Прошло секунд с начала суток: $seconds")
+//       }
+//   } else {
+//        println("Достигнут <конец файла> в процессе чтения строки. Программа прервана")
+//    }
+//}
 
 
 /**
@@ -69,7 +71,64 @@ fun main() {
  * Обратите внимание: некорректная с точки зрения календаря дата (например, 30.02.2009) считается неверными
  * входными данными.
  */
-fun dateStrToDigit(str: String): String = TODO()
+val dataList = mapOf(
+    "января" to Pair("1", 31),
+    "февраля" to Pair("2", 28),
+    "марта" to Pair("3", 31),
+    "апреля" to Pair("4", 30),
+    "мая" to Pair("5", 31),
+    "июня" to Pair("6", 30),
+    "июля" to Pair("7", 31),
+    "августа" to Pair("8", 31),
+    "сентября" to Pair("9", 30),
+    "октября" to Pair("10", 31),
+    "ноября" to Pair("11", 30),
+    "декабря" to Pair("12", 31)
+)
+
+fun leapYear(year: Int): Boolean = year % 4 == 0 || (year % 100 == 0 && year % 400 != 0)
+
+fun dateStrToDigit(str: String): String {
+    val workLine = str.split(" ")
+    var rezString = ""
+
+    if (workLine.size != 3) return ""
+    if (!dataList.containsKey(workLine[1])) return ""
+
+    val month = (dataList[workLine[1]]?.first)?.toInt() ?: 0
+    val day: Int
+    val year: Int
+
+    try {
+        day = workLine[0].toInt()
+        year = workLine[2].toInt()
+    } catch (e: NumberFormatException) {
+        return ""
+    }
+
+    if (year < 0 || year > 9999) return ""
+
+    if (leapYear(year) && month == 2 && day <= 29) {
+        rezString += when {
+            day < 10 -> "0$day.02.$year"
+            else -> "$day.02.$year"
+        }
+    } else {
+        if (day < dataList[workLine[1]]?.second ?: 0) {
+            rezString += when {
+                day < 10 -> "0$day."
+                else -> "$day."
+            }
+        } else return ""
+        rezString += if (month < 10) "0$month.$year"
+        else "$month.$year"
+    }
+    return rezString
+}
+
+//fun main() {
+//    println(dateStrToDigit("3 февраля 1988"))
+//}
 
 /**
  * Средняя
@@ -81,7 +140,42 @@ fun dateStrToDigit(str: String): String = TODO()
  * Обратите внимание: некорректная с точки зрения календаря дата (например, 30 февраля 2009) считается неверными
  * входными данными.
  */
-fun dateDigitToStr(digital: String): String = TODO()
+val digitalDataList = dataList.map { it.value.first.toInt() to Pair(it.key, it.value.second) }.toMap()
+
+fun dateDigitToStr(digital: String): String {
+    val workLine = digital.split(".")
+    var rezString = ""
+    val day: Int
+    val year: Int
+    val monthRe: Int
+
+    try {
+        monthRe = workLine[1].toInt()
+        day = workLine[0].toInt()
+        year = workLine[2].toInt()
+    } catch (e: NumberFormatException) {
+        return ""
+    }
+
+    val month = digitalDataList[workLine[1].toInt()]?.first
+
+    if (year < 0 || year > 9999) return ""
+    if (workLine.size != 3) return ""
+    if (!digitalDataList.containsKey(workLine[1].toInt())) return ""
+
+    if (leapYear(year) && month == "февраля" && day <= 29) {
+        rezString += when {
+            day < 10 -> "0$day $month $year"
+            else -> "$day $month $year"
+        }
+    } else {
+        if (day < digitalDataList[workLine[1].toInt()]?.second ?: 0) {
+            rezString += "$day "
+        } else return ""
+        rezString += "$month $year"
+    }
+    return rezString
+}
 
 /**
  * Средняя

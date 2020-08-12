@@ -3,6 +3,7 @@
 package lesson6.task1
 
 import java.lang.NumberFormatException
+import java.util.Collections.max
 
 /**
  * Пример
@@ -106,7 +107,7 @@ fun dateStrToDigit(str: String): String {
         return ""
     }
 
-    if (year < 0 || year > 9999) return ""
+    if (year < 0) return ""
 
     if (leapYear(year) && month == 2 && day <= 29) {
         rezString += when {
@@ -127,7 +128,7 @@ fun dateStrToDigit(str: String): String {
 }
 
 //fun main() {
-//    println(dateStrToDigit("3 февраля 1988"))
+//    println(dateDigitToStr("31.01.1"))
 //}
 
 /**
@@ -156,16 +157,19 @@ fun dateDigitToStr(digital: String): String {
     } catch (e: NumberFormatException) {
         return ""
     }
+    if (day < 10) {
+        println(day)
+    }
 
     val month = digitalDataList[workLine[1].toInt()]?.first
 
-    if (year < 0 || year > 9999) return ""
+    if (year < 0) return ""
     if (workLine.size != 3) return ""
     if (!digitalDataList.containsKey(workLine[1].toInt())) return ""
 
     if (leapYear(year) && month == "февраля" && day <= 29) {
         rezString += when {
-            day < 10 -> "0$day $month $year"
+            day < 10 -> "$day $month $year"
             else -> "$day $month $year"
         }
     } else {
@@ -191,7 +195,11 @@ fun dateDigitToStr(digital: String): String {
  *
  * PS: Дополнительные примеры работы функции можно посмотреть в соответствующих тестах.
  */
-fun flattenPhoneNumber(phone: String): String = TODO()
+fun flattenPhoneNumber(phone: String): String {
+    val phoneClear = phone.replace("[ ()-]".toRegex(), "")
+    if (!phoneClear.matches("^[+\\d]\\d*$".toRegex())) return ""
+    return phoneClear
+}
 
 /**
  * Средняя
@@ -203,7 +211,33 @@ fun flattenPhoneNumber(phone: String): String = TODO()
  * Прочитать строку и вернуть максимальное присутствующее в ней число (717 в примере).
  * При нарушении формата входной строки или при отсутствии в ней чисел, вернуть -1.
  */
-fun bestLongJump(jumps: String): Int = TODO()
+fun bestLongJump(jumps: String): Int {
+    //val jumpsClear = jumps.replace("[-%]".toRegex(), "")
+    //if (!jumpsClear.matches("^[+\\d]\\d*".toRegex())) return -1
+    //println(jumpsClear.split(" "))
+    //val jumpsClear = Regex("[-%]").split(jumps)
+    //val jumpsClear = jumps.replace("[-%]".toRegex(), "")
+    //val jumpsClearRez = jumpsClear.split(" ").toMutableList()
+    //println(jumpsClear)
+    //println(max(jumpsClear.map { it.toInt() }))
+    //return try {
+    //    max(jumpsClear.map { it.toInt() })
+    //} catch (e: NumberFormatException) {
+    //    -1
+    //}
+    val jumpList = jumps.split(" ")
+    var bestJump = -1
+    for (jump in jumpList) {
+        try {
+            val tempJump = jump.toInt()
+            if (tempJump > bestJump) bestJump = tempJump
+        } catch (e: NumberFormatException) {
+            if (!(jump == "-" || jump == "%")) return -1
+        }
+    }
+    return bestJump
+}
+
 
 /**
  * Сложная
@@ -216,7 +250,23 @@ fun bestLongJump(jumps: String): Int = TODO()
  * При нарушении формата входной строки, а также в случае отсутствия удачных попыток,
  * вернуть -1.
  */
-fun bestHighJump(jumps: String): Int = TODO()
+fun bestHighJump(jumps: String): Int {
+    val jumpList = jumps.split(" ")
+    var bestJump = -1
+    for ((index, jump) in jumpList.withIndex()) {
+        try {
+            val tempJump = jump.toInt()
+            if ((index < jumpList.size - 1) && jumpList[index + 1].contains("+")) {
+                if (tempJump > bestJump) bestJump = tempJump
+            }
+        } catch (e: NumberFormatException) {
+            for (symbol in jump) {
+                if (!setOf('-', '%', '+').contains(symbol)) return -1
+            }
+        }
+    }
+    return bestJump
+}
 
 /**
  * Сложная
@@ -227,7 +277,42 @@ fun bestHighJump(jumps: String): Int = TODO()
  * Вернуть значение выражения (6 для примера).
  * Про нарушении формата входной строки бросить исключение IllegalArgumentException
  */
-fun plusMinus(expression: String): Int = TODO()
+fun isItNumber(number: String): Boolean {
+    if (Regex("""[^0123456789]""").find(number) != null) return false
+    return true
+}
+
+fun isItSymbol(symbol: String): Boolean {
+    if (symbol == "+" || symbol == "-") return true
+    return false
+}
+
+fun plusMinus(expression: String): Int {
+    val tempExpression = expression.split(" ")
+    var tempNum = 0
+    var rezNum = 0
+    var tempSymb = "+"
+    var tempEx = "+"
+    loop@ for (elem in tempExpression) {
+        if (isItSymbol(elem) && isItSymbol(tempEx)) throw IllegalArgumentException()
+        tempEx = elem
+
+        when {
+            isItNumber(elem) -> tempNum = elem.toInt()
+            isItSymbol(elem) -> {
+                tempSymb = elem
+                continue@loop
+            }
+            else -> throw IllegalArgumentException()
+        }
+        when (tempSymb) {
+            "+" -> rezNum += tempNum
+            "-" -> rezNum -= tempNum
+            else -> throw IllegalArgumentException()
+        }
+    }
+    return rezNum
+}
 
 /**
  * Сложная
@@ -238,7 +323,23 @@ fun plusMinus(expression: String): Int = TODO()
  * Вернуть индекс начала первого повторяющегося слова, или -1, если повторов нет.
  * Пример: "Он пошёл в в школу" => результат 9 (индекс первого 'в')
  */
-fun firstDuplicateIndex(str: String): Int = TODO()
+fun firstDuplicateIndex(str: String): Int {
+    val listStr = str.trim().split(" ")
+    var tempWord = ""
+    var idx = 0
+    println(listStr)
+
+    for (elem in listStr) {
+        if (elem.toLowerCase() != tempWord) {
+            tempWord = elem.toLowerCase()
+        } else {
+            return idx - elem.length - 1
+        }
+        idx += elem.length + 1
+    }
+    return -1
+}
+
 
 /**
  * Сложная
@@ -251,7 +352,23 @@ fun firstDuplicateIndex(str: String): Int = TODO()
  * или пустую строку при нарушении формата строки.
  * Все цены должны быть больше либо равны нуля.
  */
-fun mostExpensive(description: String): String = TODO()
+fun mostExpensive(description: String): String? {
+    if (description == "") return ""
+
+    val proviantSplit = description.split("; ")
+    val productsToPrices = mutableMapOf<Double, String>()
+
+    for (elem in proviantSplit) {
+        val temp = elem.split(" ")
+        try {
+            productsToPrices[temp[1].toDouble()] = temp[0]
+        } catch (Exception: NumberFormatException) {
+            return ""
+        }
+    }
+    return productsToPrices[max(productsToPrices.keys)]
+}
+
 
 /**
  * Сложная

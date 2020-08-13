@@ -195,7 +195,23 @@ fun centerFile(inputName: String, outputName: String) {
  * 8) Если входной файл удовлетворяет требованиям 1-7, то он должен быть в точности идентичен выходному файлу
  */
 fun alignFileByWidth(inputName: String, outputName: String) {
-    TODO()
+    val outFile = File(outputName).bufferedWriter()
+
+    val inFile = File(inputName).readLines().map { it.trim().replace("\\s+".toRegex()," ") }
+    val maxLen = inFile.maxBy { it.length }?.length ?: 0
+
+    for (line in inFile) {
+        val kolProb = line.sumBy { if (it == ' ') 1 else 0 }
+        val dopProb = (maxLen - line.length)
+        val celProb = if (kolProb == 0) 0 else dopProb / kolProb
+        var ostProb = if (kolProb == 0) 0 else dopProb % kolProb
+
+        outFile.write( line.split(' ')  // разрезаю в List для удобства добавления
+            .map{var i1 = 1; if (ostProb <= 0) i1 = 0 else ostProb--; it.padEnd(it.length + celProb + i1)}
+            .joinToString (" ").trim())
+        outFile.newLine()
+    }
+    outFile.close()
 }
 
 /**
@@ -216,7 +232,9 @@ fun alignFileByWidth(inputName: String, outputName: String) {
  * Ключи в ассоциативном массиве должны быть в нижнем регистре.
  *
  */
-fun top20Words(inputName: String): Map<String, Int> = TODO()
+fun top20Words(inputName: String): Map<String, Int> {
+    val regExpr = "^[a-zA-Zа-яА-Я_ ]*$"
+}
 
 /**
  * Средняя

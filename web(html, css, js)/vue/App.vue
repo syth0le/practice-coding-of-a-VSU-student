@@ -1,106 +1,106 @@
 <template>
-  <div  class="app">
-    <div class="textiknopki">
-      <div class="pole">
-        <textarea v-model="string" cols="80" rows="50" name="text" placeholder="Введите текст"></textarea>
-      </div>
-      <div class="knopki">
-        <button @click="reverse" class="knopka" >перевернуть</button>
-        <button @click="split" class="knopka" >пробел</button>
-        <button @click="indexing" class="knopka" >разбиение</button>
-        <button @click="counting" class="knopka" >хар-ки текста</button>
-      </div>
+    <div id="app">
+        <textarea id="dataoutput" rows="10" cols="50" v-model="text"></textarea>
+        <div id="buttons">
+            <button class="submit-button btn1" @click="reverseData">Reverse</button>
+            <button class="submit-button btn2" @click="splitData">Split</button>
+            <button class="submit-button btn3" @click="indexingData">Index</button>
+            <button class="submit-button btn4" @click="countingData">Count</button>
+            <button class="submit-button btn5" @click="deleteData">Delete</button>
+        </div>
+        <p class="textmessage" v-html="message">{message}</p>
     </div>
-    <p class="textmessage" v-html="result">{{ result }}</p>
-  </div>
 </template>
 
 <script>
-import Vue from 'vue';
-import Component from 'vue-class-component';
-export default Component({})(
-  class App extends Vue {
-    result = '';
-    string = '';
-    reverse() {this.result = this.string.split("").reverse().join("")}
-    split() {this.result = this.string.split("").join(" ")}
-    indexing() {
-      this.len = this.string.length;
-      this.finalString = "";
-      for (let i = 0; i <= this.len; i++) {
-          this.finalString += `${i}: ${this.string[i]}, `;
-      }
-      this.finalString = this.finalString.split(this.len);
-      if (this.finalString[0] === "") {
-          this.result = ""
-      } else { 
-          this.result = this.finalString[0].slice(0,-2) + '.';
-      }
-    }
-    counting() {
-      this.textMap = new Map();
-      this.len = this.string.length;
-      for(let i = 0; i < this.string.length; i++){
-          if (this.textMap.has(this.string[i])){
-              this.textMap.set(this.string[i], this.textMap.get(this.string[i]) + 1)
-          }
-          else{this.textMap.set(this.string[i],1)}
-      }
+    // Vue entry:
+    new Vue({
+        el: '#app',
+        data: {
+            text:'',
+            message:'',
+        },
+        methods: {
+            reverseData: function(reverseData) {
+                this.message = this.text.split("").reverse().join("");
 
-      this.finalString = "";
-      for (var [letter, value] of this.textMap){
-          this.finalString += `${letter}: ${value}, ${(value/this.len).toString().slice(0,4)}%;\n`
-      }
+            },
+            splitData: function() {
+                this.message = this.text.split("").join(" ").split("   ").join(" ");
+            },
+            indexingData: function() {
 
-      this.temp = this.finalString.slice(0,-2) + '.';
-      if (this.temp === ".") {
-          this.result = ""
-      } else {
-          this.result = this.temp
-      }
-    }
-  }
-);
+                this.len = this.text.length;
+                this.finalString = "";
+                for (let i = 0; i <= this.len; i++) {
+                    this.finalString += `${i}: ${this.text[i]}, `;
+                }
+                this.finalString = this.finalString.split(this.len);
+                if (this.finalString[0] === "") {
+                    this.message = ""
+                } else {
+                    this.message = this.finalString[0].slice(0,-2) + '.';
+                }
+            },
+            countingData: function() {
+                this.textMap = new Map();
+                this.len = this.text.length;
+                try {
+                    for(let i = 0; i < this.text.length; i++){
+                        if (this.textMap.has(this.text[i])){
+                            this.textMap.set(this.text[i], this.textMap.get(this.text[i]) + 1)
+                        }
+                        else{this.textMap.set(this.text[i],1)}
+                    }
+                } catch {}
+
+                this.finalString = "";
+                for (var [letter, value] of this.textMap){
+                    this.finalString += `${letter}: ${value}, ${(value/this.len).toString().slice(0,4)}%;\n`
+                }
+
+                this.temp = this.finalString.slice(0,-2) + '.';
+                if (this.temp === ".") {
+                    this.message = ""
+                } else {
+                    this.message = this.temp
+                }
+            },
+            deleteData: function() {
+                this.text = "";
+                this.message = "";
+                alert("Вы удалили сообщение!")
+            }
+        }
+    });
 </script>
 
 <style>
-.pole {
-    display: flex;
-    width: 250px;
-    height: 150px;
-    cursor: text;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-    font-family: century;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #CD5C5C;
-}
-.knopka {
-    color: white;
-    background: #CD5C5C;
-    padding: .7em 1.5em;
-    outline: none;
-    text-align: center;
-}
-.knopki {
-    display: grid;
-    justify-content: center;
-    grid-template-rows: 60px 60px;
-    grid-template-columns: 120px 120px;
-    grid-gap: 3vw;
-}
-.textiknopki {
-    display: grid;
-    justify-content: center;
-    grid-template-rows: 40px 40px;
-    grid-template-columns: 80px 80px;
-    grid-gap: 300px;
-}
-.app {
-    font-size: 30px;
-    color: black;
-    text-align: center;
-    font-size: 40px;
-}
+    #dataoutput {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    #buttons{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    .submit-button{
+        margin: 10px;
+    }
+
+    .textmessage{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
 </style>

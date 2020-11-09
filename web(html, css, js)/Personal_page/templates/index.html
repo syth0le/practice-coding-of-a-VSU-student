@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal page</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/name_d.png')}}" type="image/png" style="color: aliceblue">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <section class="fullscreen">
+            <div class="fullscreen_body">
+                <div class="center_div">
+                    <h1 class="fullscreen_title">Чередниченко Даниил</h1>
+                    <div class="fullscreen_text">Python backend & ML developer</div>
+                </div>
+                <div href="" class="fullscreen_link"><img src="{{ url_for('static', filename='images/arrow.png') }}" id="button_next" width="64" height="64" alt="next"></div>
+            </div>
+        </section>
+        <section class="fullscreen2">
+        </section>
+    </div>
+
+    <div class="content">
+        <div class="head_info">
+            <div class="photo">
+                <img class="about_card_photo" src="https://avatars.githubusercontent.com/syth0le" alt="">
+            </div>
+            <div class="bio_full">
+                <h1 class="fullname">Чередниченко Даниил Сергеевич</h1>
+                <p class="bio1"> Студент 2 курса ВГУ направления «‎Информатика и вычислительная техника»‎</p>
+                <p class="bio2"> Занимаюсь <b>backend</b> разработкой на <i>Python</i>, используя такие фреймворки, как <i>Django & Flask</i>. Интересуюсь <b>машинным обучением</b>, хорошо разбираюсь в <b><i>NLP</i></b>. Хочу попробовать себя в мобильной разработке на <i>Kotlin</i> или <i>Swift</i>.</p>
+                <div class="links">
+                    <a id="link1" href="https://github.com/syth0le" target="_blank"><img align="center" alt="Repositories" width="22px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png"></a>
+                    <a href="https://www.linkedin.com/in/daniil-cherednichenko-4294141b0/" target="_blank"><img align="center" alt="LinkedIn" width="22px" src="https://cdn.worldvectorlogo.com/logos/linkedin-icon.svg"></a>
+                    <a href="https://vk.com/sythole" target="_blank"><img align="center" alt="VK" width="22px" src="https://cdn.worldvectorlogo.com/logos/vkcom.svg"></a>
+                    <a href="https://codeye.ru" target="_blank"><img align="center" alt="Codeye" width="22px" src="{{ url_for('static', filename='images/codeye.png') }}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="personal_data">
+            <p> Родился и вырос на юге России: в Ставропольском крае. Обожаю активные виды спорта. Не могу начать свой день без кофе. Всегда стараюсь постигать что-то новое.</p>
+            <p style="padding-top: 10px"> Без ума от <i>Python</i> и возможностей этого языка, люблю элегантный <i>Kotlin</i>. Нейтрально отношусь к плюсам и <i>С</i>. Не люблю <i>JS</i> и уж тем более <i>PHP</i>.</p>
+        </div>
+        <div class="studing">
+            <h2 class="ex-block-title">Обучение:</h2>
+            <ul>
+              <li>МБОУ средняя образовательная школа №8 г.Ессентуки<span class="date">2008-2019 год</span></li>
+              <li>Воронежский Государственный Университет, Физический факультет, «‎Информатика и вычислительная
+                техника»<span class="date">2019-2023 год</span></li>
+            </ul>
+        </div>
+        <div class="work">
+            <h2 class="ex-block-title">Опыт работы:</h2>
+            <ul>
+              <li>Обработка и семантический анализ 800 тысяч текстов новостной ленты в целях выявления самых популярных словосочетаний и тем, для дальнейшего предположения популярности определенных вещей на основе предсказаний алгоритмов машинного обучения.
+                  <span class="role"> Роль: <b><i>Data Science Intern</i></b> </span> <span class="stack">Cтек технологий: <i>Python, pandas, pymorphy, nltk, scikit-learn, plotly</i></span><span class="date">2020 год</span></li>
+              <li>Создание собственного проекта <a class="ref-link" target="_blank" href="https:\\codeye.ru">codeye.ru</a> с
+                  целью получения опыта и новых знаний в области разработки веб-приложений<span class="role"> Роль: <b><i>BackEnd</i></b> </span><span class="stack">Cтек технологий: <i>Flask + SQL</i></span><span class="date">2020 год</span></li>
+            </ul>
+        </div>
+        <div class="marks_table">
+            <table class="table_dark">
+                <thead>
+                  <tr>
+                    <th>Предмет</th>
+                    <th>Оценка</th>
+                    <th>Комментарий</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Математичесий анализ</td>
+                    <td>отл.</td>
+                    <td>Основная дисциплина для четкого понимания всей высшей математики в ВУЗе. Не смотря на кривое
+                        объяснение материала, кучу не нужных правил и теорем, мне было интересно заниматься этой дисциплиной.
+                    Очень люблю математику, только поэтому мат. анализ мне понравился.</td>
+                  </tr>
+                  <tr>
+                    <td>История</td>
+                    <td>хор.</td>
+                    <td>Изучали то, что изучали 300 раз в школе. Из года в год одно и тоже. Пустая трата времени.</td>
+                  </tr>
+                  <tr>
+                    <td>Лин. алг. и ан. геом.</td>
+                    <td>отл.</td>
+                    <td>Основная дисциплина для понимания машинного обучения и нейронных сетей. Круто. Мне понравилось, преподаватель
+                    без всяких книг и методичек преподнесла материал так, что мне этого материала было достаточно для изучения
+                    ML алгоритмов.</td>
+                  </tr>
+                  <tr>
+                    <td>Физика</td>
+                    <td>отл.</td>
+                    <td>12 заряженных конденсаторов из 10. Лабы огонь, по электричеству особенно. А в общем, та же самая физика,
+                        что и в школе, только на глубоком уровне.</td>
+                  </tr>
+                  <tr>
+                    <td>Вычислительная техника</td>
+                    <td>отл.</td>
+                    <td>Вроде был ассемблер. Все что и запомнил, остальное ничего нового не узнал.</td>
+                  </tr>
+                  <tr>
+                    <td>Интерфейсы периферийных устройств</td>
+                    <td>отл.</td>
+                    <td>Единственная полезная штука - это тема с маршрутизацией сетей и сетевыми протоколами. Больше ничего нового не узнал.</td>
+                  </tr>
+                  <tr>
+                    <td>Микропроцессорные системы</td>
+                    <td>отл.</td>
+                      <td>Программировали на языке <i>С</i>. Это мощный язык, но больше писать на нем не буду (только для души, если какую-то плату куплю на ардуино)
+                        Классный опыт, преподаватель супер, все внятно и понятно объяснял, поняли работу языков на более низком уровне.
+                        Однозначно 13 переполненных стеков из 8.
+                    </td>
+                  </tr>
+                <tr>
+                    <td>Философия, культорология, деловое общение.</td>
+                    <td>отл.</td>
+                    <td>Пустая трата времени, хоть и некоторые вещи были инетересны, но лучше бы, как в Европе была бы возможность отказываться от не нужных дисциплин.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="grid">
+            {% for i in range(1, 13)%}
+            <div>
+                <div class="photo"><img src="{{url_for('static', filename='images/' ~ i ~ '.jpg')}}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>
+            {% endfor %}
+            <!--<div>
+                <div class="photo"><img src="{{ url_for('static', filename='images/1.jpg') }}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>
+            <div>
+                <div class="photo"><img src="{{ url_for('static', filename='images/2.jpg') }}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>
+            <div>
+                <div class="photo"><img src="{{ url_for('static', filename='images/3.jpg') }}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>
+            <div>
+                <div class="photo"><img src="{{ url_for('static', filename='images/4.jpg') }}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>
+            <div>
+                <div class="photo"><img src="{{ url_for('static', filename='images/5.jpg') }}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>
+            <div>
+                <div class="photo"><img src="{{ url_for('static', filename='images/6.jpg') }}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>
+            <div>
+                <div class="photo"><img src="{{ url_for('static', filename='images/7.jpg') }}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>
+            <div>
+                <div class="photo"><img src="{{ url_for('static', filename='images/8.jpg') }}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>
+            <div>
+                <div class="photo"><img src="{{ url_for('static', filename='images/9.jpg') }}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>
+            <div>
+                <div class="photo"><img src="{{ url_for('static', filename='images/10.jpg') }}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>
+            <div>
+                <div class="photo"><img src="{{ url_for('static', filename='images/11.jpg') }}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>
+            <div>
+                <div class="photo"><img src="{{ url_for('static', filename='images/12.jpg') }}" alt=""></div>
+                <div><p>My Friend</p></div>
+            </div>-->
+        </div>
+    </div>
+</body>
+</html>

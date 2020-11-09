@@ -1,0 +1,335 @@
+/* ОБНУЛЕНИЕ СТИЛЕЙ */
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+    background-color: #1b2443;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.wrapper{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.fullscreen{
+    min-height: 100vh;
+    background-color: aliceblue;
+    display: flex;
+    padding: 50px 0;
+    background-image: url(../images/code_jpeg1.jpeg);
+    background-position-x: center;
+    background-position-y: top;
+    background-size: cover;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    background-size: cover;
+}
+
+.fullscreen2{
+    min-height: 100vh;
+    display: flex;
+    background: url(../images/parallax.jpg) center / cover no-repeat fixed;
+}
+
+.circle {
+    background: url(../images/arrow.png) no-repeat center;
+    background-size: 60px 60px;
+    position: center;
+    width: 50%;
+    height: 100px;
+    -webkit-animation: pulsing 2s infinite;
+    animation: pulsing 2s infinite;
+}
+
+@-webkit-keyframes pulsing {
+  0% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5)
+  }
+  50% {
+    -webkit-transform: scale(1.0, 1.0);
+    transform: scale(1.0, 1.0);
+  }
+  100% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+  }
+}
+
+@keyframes pulsing {
+  0% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5)
+  }
+  50% {
+    -webkit-transform: scale(1.0, 1.0);
+    transform: scale(1.0, 1.0);
+  }
+  100% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+  }
+}
+
+.fullscreen_parallax{
+    background: url(../images/parallax.jpg) center / cover no-repeat fixed;
+}
+
+.fullscreen_body{
+    /*background-color: rebeccapurple;*/
+    padding-top: 250px;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*padding: 0 10 20px;*/
+}
+.center_div{
+    border-radius: 90px;
+    padding: 10px;
+    background-color: #333333;
+    margin: 0 auto; /* Выравниваем слой по центру */
+    width: 62%;
+    opacity: 0.8; /* Значение прозрачности */
+    filter: alpha(Opacity=80);
+}
+
+.fullscreen_title{
+    font-size: 50px;
+    margin: 0 0 20px 0;
+
+}
+.fullscreen_text{
+    font-size: 25px;
+    margin: 0 0 0px 0;
+}
+
+.fullscreen_link{
+    position: center;
+    bottom: -1000px;
+    padding-top: 200px;
+    -webkit-animation: pulsing 2s infinite;
+    animation: pulsing 2s infinite;
+}
+
+.about_card_photo {
+    display: inline-block;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition-duration: 1s;
+    pointer-events: none;
+}
+
+.links{
+    display: flex;
+    border-radius: 90px;
+    width: 300px;
+    align-items: center;
+    background-color: aliceblue;/* Выравниваем слой по центру */
+    opacity: 0.8; /* Значение прозрачности */
+    filter: alpha(Opacity=80);
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0 10px 0;
+    margin: 0 auto;
+}
+
+.links a {
+    transition: all 500ms;
+}
+
+.links a:hover {
+    -webkit-transform: rotateX(-20deg);
+    -moz-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    transform: scale(1.4);
+}
+
+.content {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+}
+
+.bio_full{
+    margin: 40px 20px 0 20px;
+}
+
+.bio_full p{
+    width: 94%;
+}
+
+.head_info{
+    display: flex;
+    margin: 0 0 40px 0;
+}
+
+.bio1{
+    padding-top: 10px;
+    margin-left: 0px;
+}
+
+.bio2{
+    padding-top: 10px;
+    margin-left: 0px;
+    padding-bottom: 20px;
+}
+
+
+.table_dark {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    position: center;
+    font-size: 14px;
+    width: 90%;
+    text-align: left;
+    border-collapse: collapse;
+    background: #252F48;
+    margin: auto;
+}
+.table_dark th {
+    color: #b6d594;
+    border-bottom: 1px solid #37B5A5;
+    padding: 12px 17px;
+}
+.table_dark td {
+    color: #CAD4D6;
+    border-bottom: 1px solid #37B5A5;
+    border-right:1px solid #37B5A5;
+    padding: 7px 17px;
+}
+.table_dark tr:last-child td {
+    border-bottom: none;
+}
+.table_dark td:last-child {
+    border-right: none;
+}
+.table_dark tr:hover td {
+    text-decoration: underline;
+}
+
+.personal_data{
+    width: 90%;
+    display: grid;
+    position: center;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0 10px 0;
+    margin: 0 auto;
+}
+
+.studing{
+    width: 90%;
+    display: grid;
+    position: center;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0 10px 0;
+    margin: 0 auto;
+}
+
+.work{
+    width: 90%;
+    display: grid;
+    position: center;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0 10px 0;
+    margin: 0 auto;
+}
+
+.studing ul li, .work ul li {
+    margin-bottom: 10px;
+}
+
+.date {
+    font-size: 0.7em;
+    color: #b6d594;
+    display: block;
+}
+
+.ref-link{
+    color: #b6d594;
+}
+
+.role {
+    font-size: 0.7em;
+    color: #d38df5;
+    display: block;
+}
+
+.stack{
+    font-size: 0.7em;
+    color: #d38df5;
+    display: block;
+}
+
+.photo:hover {
+    -webkit-transform: rotateX(-20deg);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.photo {
+    transition: all 900ms;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-gap: 1vw;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+#grid > div {
+    display: table-column;
+    font-size: 20px;
+    height: 250px;
+
+}
+#grid > div > div > img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition-duration: 1s;
+    pointer-events: none;
+    margin: 0 auto;
+}
+#grid > div > div > p {
+    padding: 10px;
+    text-align: center;
+}

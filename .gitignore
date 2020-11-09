@@ -1,0 +1,23 @@
+.DS_Store
+/web(html, css, js)/vue-app/node_modules
+/web(html, css, js)/vue-app/dist
+
+
+# local env files
+/web(html, css, js)/vue-app.env.local
+/web(html, css, js)/vue-app.env.*.local
+
+# Log files
+/web(html, css, js)/vue-appnpm-debug.log*
+/web(html, css, js)/vue-appyarn-debug.log*
+/web(html, css, js)/vue-appyarn-error.log*
+/web(html, css, js)/vue-apppnpm-debug.log*
+
+# Editor directories and files
+/web(html, css, js)/vue-app.idea
+/web(html, css, js)/vue-app.vscode
+/web(html, css, js)/vue-app*.suo
+/web(html, css, js)/vue-app*.ntvs*
+/web(html, css, js)/vue-app*.njsproj
+/web(html, css, js)/vue-app*.sln
+/web(html, css, js)/vue-app*.sw?

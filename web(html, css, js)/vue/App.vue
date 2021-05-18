@@ -23,13 +23,11 @@
         methods: {
             reverseData: function(reverseData) {
                 this.message = this.text.split("").reverse().join("");
-
             },
             splitData: function() {
                 this.message = this.text.split("").join(" ").split("   ").join(" ");
             },
             indexingData: function() {
-
                 this.len = this.text.length;
                 this.finalString = "";
                 for (let i = 0; i <= this.len; i++) {
@@ -53,12 +51,10 @@
                         else{this.textMap.set(this.text[i],1)}
                     }
                 } catch {}
-
                 this.finalString = "";
                 for (var [letter, value] of this.textMap){
                     this.finalString += `${letter}: ${value}, ${(value/this.len).toString().slice(0,4)}%;\n`
                 }
-
                 this.temp = this.finalString.slice(0,-2) + '.';
                 if (this.temp === ".") {
                     this.message = ""
@@ -95,7 +91,6 @@
     .submit-button{
         margin: 10px;
     }
-
     .textmessage{
         position: relative;
         display: flex;

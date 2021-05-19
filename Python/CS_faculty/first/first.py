@@ -10,9 +10,9 @@ test_2 = [0, 3, 1, 6, 9]
 
 
 def answer_1(list_1, list_2):
-    res_list = list_1
-    for elem in list_2:
-        if elem not in res_list:
+    res_list = list_1  # формируем конечный список с помощью первого
+    for elem in list_2:  # итерируемся по второму
+        if elem not in res_list: # если элемента нет в списке то добавляем его
             res_list.append(elem)
     return res_list
 

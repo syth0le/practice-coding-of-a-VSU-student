@@ -15,7 +15,7 @@
 text = "Пойду  гулять , теперь иду :туда,а ты   туда."
 
 
-def generator_list(text):
+def generator_list(text):  # создаем генератор для решения 4 задания
     rules_v2 = [".", "!", "?", ",", ";"]
 
     for elem in rules_v2:
@@ -24,7 +24,7 @@ def generator_list(text):
 
 
 def answer_5_1(text) ->list:
-
+    # решение 4 задания с генератором
     for elem in generator_list(text):
         text = elem
 
@@ -34,6 +34,7 @@ def answer_5_1(text) ->list:
 
 
 def answer_5_2(func) ->list:
+    # декоратор для решения 2 задания
     def wrap():
         data = func()
 
@@ -48,6 +49,7 @@ def answer_5_2(func) ->list:
 
 @answer_5_2
 def smt_func():
+    # решение 2 задания с помощью декоратора
     matrix = [
         [0, 3, 4, 5, 4, 5, 4],
         [4, 3, 4, 5, 4, 5, 35],

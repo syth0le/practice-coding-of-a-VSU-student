@@ -12,12 +12,12 @@ matrix = [
 
 def answer_2(array) -> list:
 
-    transposed = list(zip(*array))
+    transposed = list(zip(*array))  # используем метод транспонирования матрицы
     temp = list()
-    for elem in transposed:
-        if elem not in temp:
-            temp.append(elem)
-    return list(zip(*temp))
+    for elem in transposed:  # итерируемся по полученному массиву
+        if elem not in temp:  # если элемента нет во временном массиве то добавляем его
+            temp.append(elem)  # для того чтобы исключить повторяющиеся элементы
+    return list(zip(*temp))   # транспонируем обратно
 
 
 print(answer_2(matrix))

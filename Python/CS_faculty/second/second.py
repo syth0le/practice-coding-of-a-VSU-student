@@ -9,4 +9,5 @@ matrix = [
 def answer_2(array) -> list:
     return list(zip(*array))
 
+
 print(answer_2(matrix))

@@ -7,14 +7,14 @@ text = "Пойду  гулять , теперь иду ;туда,а ты   ту�
 
 
 def answer_4(text):
-    rules_v2 = [".", "!", "?", ",", ";"]
+    rules_v2 = [".", "!", "?", ",", ";"]   # задаем правила замены
 
     for elem in rules_v2:
-        text = text.replace(f" {elem}", elem).replace(elem, f"{elem} ")
+        text = text.replace(f" {elem}", elem).replace(elem, f"{elem} ")   # заменяем по правилам из задания
 
-    text = text.replace("  ", " ").replace("  ", " ")
+    text = text.replace("  ", " ").replace("  ", " ")  # убераем лишние пробелы
 
-    return text
+    return text   # выводим конечную строку
 
 
 print(answer_4(text))

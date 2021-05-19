@@ -3,12 +3,32 @@
   В случае существования нескольких подходящих троек точек – выбрать произвольную."""
 import math
 
-dots = [(1, -3), (2, 4), (3, -6), (-5, -1), (-5, -3)]
+dots = [((1, -3), (2, 4), (3, -6)),
+        ((3, 3), (2, 4), (13, -16)),
+        ((5, 0), (3, -6), (3, -6)),
+        ((13, 7), (2, 4), (5, 0)),
+        ((34, 35), (2, 9), (3, -6))]
+
 
 def answer_3(dots):
 
-    AB = math.sqrt(math.pow(angle2.getX() - angle1.getX(), 2) + math.pow(angle2.getY() - angle1.getY(), 2));
-    AC = math.sqrt(math.pow(angle3.getX() - angle1.getX(), 2) + math.pow(angle3.getY() - angle1.getY(), 2));
-    BC = math.sqrt(math.pow(angle3.getX() - angle2.getX(), 2) + math.pow(angle3.getY() - angle2.getY(), 2));
-    return AB + AC + BC
+    res = dict()
 
+    for triangle in dots:
+
+        x_1, y_1 = triangle[0]
+        x_2, y_2 = triangle[1]
+        x_3, y_3 = triangle[2]
+
+        AB = math.sqrt(math.pow(x_2-x_1, 2) + math.pow(y_2-y_1, 2))
+        AC = math.sqrt(math.pow(x_3-x_2, 2) + math.pow(y_3-y_2, 2))
+        BC = math.sqrt(math.pow(x_1-x_3, 2) + math.pow(y_1-y_3, 2))
+
+        perimeter = AB + AC + BC
+        if perimeter not in res:
+            res[perimeter] = triangle
+
+    return res[min(res)]
+
+
+print(answer_3(dots))

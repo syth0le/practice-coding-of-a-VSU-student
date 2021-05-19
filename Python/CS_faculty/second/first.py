@@ -6,16 +6,19 @@ def answer_1(array) -> list:
     i = 0
     length = len(array)
     while i < length:
+        # добавляем все отрицательные числа по порядку
         if array[i] < 0:
             array.append(array[i])
         i += 1
 
     i = 0
     while i < length:
+        # добавляем все положительные числа по порядку
         if array[i] >= 0:
             array.append(array[i])
         i += 1
 
+    # выводим массив начиная с первого добавленного элемента
     return array[length:]
 
 

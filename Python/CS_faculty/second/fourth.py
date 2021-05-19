@@ -6,8 +6,8 @@ text = 'Hello!@23#!%!#&йоу соб4аки&!*!#$#%@*+_{ world!'
 
 
 def answer_4(string) -> list:
-    reg = re.compile('[^a-zA-Zа-яА-Я0-9 ]')
-
+    reg = re.compile('[^a-zA-Zа-яА-Я0-9 ]')  # создаем регулярное выражение для текста
+    # с помощью лямбда выражения фильтруем очищенный текст, который с помощью split переделан в массив
     return list(filter(lambda x: x != '', reg.sub(' ', string).split(" ")))
 
 

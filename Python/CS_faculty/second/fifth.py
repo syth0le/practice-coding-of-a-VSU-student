@@ -8,6 +8,7 @@ array_2 = [5, -7, 3, 0, 1, 3, -7, 0, -2]
 
 
 def generator_func(side: str, array, length: int):
+    # создаем генератор для решения 1 задания
     i = 0
     if side == "down":
         while i < length:
@@ -24,6 +25,7 @@ def generator_func(side: str, array, length: int):
 
 
 def answer_1(array) -> list:
+    # решение задания 1 через генераторы
     length = len(array)
     generator_func(side="down", array=array, length=length)
     generator_func(side="up", array=array, length=length)
@@ -31,6 +33,7 @@ def answer_1(array) -> list:
 
 
 def decorator_func(func):
+    # создаем декоратор для решения 2 задачи
     def wrap():
         functionality = func()
         return list(zip(*functionality))
@@ -39,6 +42,7 @@ def decorator_func(func):
 
 @decorator_func
 def func():
+    # решение 2 задачи через декоратор
     return [
         [0, 3, 4],
         [4, 3, 4],

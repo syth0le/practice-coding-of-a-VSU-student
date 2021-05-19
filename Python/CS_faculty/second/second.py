@@ -7,7 +7,7 @@ matrix = [
 
 
 def answer_2(array) -> list:
-    return list(zip(*array))
+    return list(zip(*array))   # возвращаем транспонированный массив (как у матрицы)
 
 
 print(answer_2(matrix))

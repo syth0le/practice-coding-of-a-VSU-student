@@ -1,15 +1,13 @@
 last_name_dict = {
-    'фамилия1': {'theory': [], 'practice': []},
-    'фамилия2': {'theory': [], 'practice': []},
-    'фамилия3': {'theory': [], 'practice': []},
-    'фамилия4': {'theory': [], 'practice': []},
-    'фамилия5': {'theory': [], 'practice': []},
-    'фамилия6': {'theory': [], 'practice': []},
-    'фамилия7': {'theory': [], 'practice': []},
+    'Аля': {'theory': [], 'practice': []},
+    'Даня': {'theory': [], 'practice': []},
+    'Андрей': {'theory': [], 'practice': []},
+    'Серега': {'theory': [], 'practice': []},
+    'Денис': {'theory': [], 'practice': []},
 }
 
-N_THEORETICAL = 37
-N_PRACTICAL = 10
+N_THEORETICAL = 32
+N_PRACTICAL = 0
 
 
 def counter(N: int, last_name_dict: dict, type: str) -> dict:
@@ -31,6 +29,11 @@ def print_dict(data: dict) -> None:
         for elem in data[item]:
             temp += f'{elem} {data[item][elem]} - '
         print(temp[:-2])
+
+
+def print_the_only_key(data: dict, key: str) -> None:
+    for item in data:
+        print(f'{item}: {data[item][key]}')
 
 
 def relocate_data(data: dict, N: int) -> dict:
@@ -56,4 +59,5 @@ if __name__ == '__main__':
     practical_plus_theoretical = counter(N_PRACTICAL, last_name_dict, 'practice')
     relocated2 = relocate_data(last_name_dict, N_PRACTICAL)
     relocated3 = relocate_data(last_name_dict, N_THEORETICAL)
-    print_dict(practical_plus_theoretical)
+    # print_dict(practical_plus_theoretical)
+    print_the_only_key(practical_plus_theoretical, 'theory')
